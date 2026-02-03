@@ -1,0 +1,14 @@
+# Nix/NixOS specific
+result
+result-*
+.direnv/
+.envrc
+
+# VS Code / Cursor
+.vscode/
+.history/
+
+# General OS junk
+.DS_Store
+*.swp
+*~
