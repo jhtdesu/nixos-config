@@ -109,21 +109,26 @@
     gtk3
   ];
 
-  # fish shell
-  programs.fish = {
-    enable = true;
-    interactiveShellInit = ''
-      set fish_greeting # Disable greeting
-    '';
-  };
   users.users.yukii.shell = pkgs.fish;
   # Docker
   virtualisation.docker.enable = true;
   
   # enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    #Experiental features
+    experimental-features = [ "nix-command" "flakes" ];
+    # This is the build speedup
+    max-jobs = 1;
+    cores = 0; # Use all available logical cores for each build
+    
+    # Optional: keeps your system fast by cleaning up duplicates
+    auto-optimise-store = true;
+    };
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  
+  # remove manual from updates
+  documentation.nixos.enable = false;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -135,32 +140,6 @@
     curl
  ];
 
-  # nix-shell temp
-  programs.bash.interactiveShellInit = ''
-    try() {
-      PKG="$1"
-      # Still need the double single-quote escape for Nix
-      CMD="''${2:-$1}"
-    
-      # 1. Create the temp folder manually so we know its name
-      MY_TEMP_DIR=$(mktemp -d)
-      echo "📦 Sandbox Created: $MY_TEMP_DIR"
-
-      # 2. Run the command using that specific folder
-      nix-shell -p "$PKG" --run "HOME=$MY_TEMP_DIR $CMD"
-    
-      # 3. The moment the app closes, delete the folder
-      rm -rf "$MY_TEMP_DIR"
-      echo "🗑️ Sandbox Deleted: $MY_TEMP_DIR"
-    }
-  '';
-
-  # fonts
-  fonts.packages = with pkgs; [
-    jetbrains-mono
-    nerdfonts
-  ];
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -170,7 +149,8 @@
   # };
 
   # List services that you want to enable:
-
+  # Use Fish as default
+  programs.fish.enable = true;
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 

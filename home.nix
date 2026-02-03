@@ -8,6 +8,9 @@
   # User-specific packages
   home.packages = with pkgs; [
     home-manager
+    # Fonts
+    nerdfonts
+    jetbrains-mono
     # Dev Tools
     vscode
     code-cursor 
@@ -34,17 +37,38 @@
     fd
     xclip
   ];
-
   # Move your aliases here
   programs.fish = {
     enable = true;
+    interactiveShellInit = ''
+      set fish_greeting # Disable greeting
+    '';
     shellAliases = {
-      update = "sudo nixos-rebuild switch --flake ~/nixos-config#jhtdesu";
-      clean = "sudo nix-collect-garbage -d";
-      nconf = "nvim ~/nixos-config/configuration.nix";
-      hconf = "nvim ~/nixos-config/home.nix";
+      update = "nh os switch ~/nixos-config";
+      clean = "nh clean all";
+      nconf = "sudo nvim ~/nixos-config/configuration.nix";
+      hconf = "sudo nvim ~/nixos-config/home.nix";
       cursor = "cursor --ozone-platform=wayland";
       code = "code --ozone-platform-hint=auto";
+    };
+  };
+  programs.fish.functions = {
+    try = {
+      body = ''
+        set -l pkg $argv[1]
+        set -l cmd $argv[1]
+        if test (count $argv) -ge 2
+          set cmd $argv[2]
+        end
+
+        set -l my_temp_dir (mktemp -d)
+        echo "📦 Sandbox Created: $my_temp_dir"
+
+        nix-shell -p $pkg --run "HOME=$my_temp_dir $cmd"
+
+        rm -rf $my_temp_dir
+        echo "🗑️ Sandbox Deleted: $my_temp_dir"
+      '';
     };
   };
   # Git Identity
@@ -56,10 +80,28 @@
       init.defaultBranch = "master";
     };
   };
+  # SSH Configuration
+  programs.ssh = {
+    enable = true;
+    matchBlocks = {
+      "github.com" = {
+        hostname = "github.com";
+        identityFile = "~/.ssh/id_ed25519_github";
+      };
+    };
+  };
 
   # .NET Environment Variables
   home.sessionVariables = {
     DOTNET_ROOT = "${pkgs.dotnet-sdk_8}";
+  };
+  # Nix helper
+  programs.nh = {
+    enable = true;
+    # This sets the NH_FLAKE variable so you don't have to type the path
+    flake = "/home/yukii/nixos-config"; 
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
   };
 
   # GNOME settings (Fixes the window centering issue)
