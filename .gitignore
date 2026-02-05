@@ -12,3 +12,5 @@ result-*
 .DS_Store
 *.swp
 *~
+*.save
+

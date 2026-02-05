@@ -7,10 +7,15 @@
 
   # User-specific packages
   home.packages = with pkgs; [
+    # Home manager
     home-manager
+    # Niri
+    niri
+    # Fuzzel launcher
+    fuzzel
+    swaybg
     # Fonts
-    nerdfonts
-    jetbrains-mono
+    nerd-fonts.jetbrains-mono
     # Dev Tools
     vscode
     code-cursor 
@@ -36,6 +41,7 @@
     fishPlugins.fzf-fish
     fd
     xclip
+    alacritty
   ];
   # Move your aliases here
   programs.fish = {
@@ -45,13 +51,16 @@
     '';
     shellAliases = {
       update = "nh os switch ~/nixos-config";
-      clean = "nh clean all";
+      clean = "nh clean all --keep 2 2>/dev/null";
       nconf = "sudo nvim ~/nixos-config/configuration.nix";
       hconf = "sudo nvim ~/nixos-config/home.nix";
       cursor = "cursor --ozone-platform=wayland";
       code = "code --ozone-platform-hint=auto";
+      bios = "sudo systemctl reboot --firmware-setup";
+      windows = "sudo grub-reboot 'Windows Boot Manager (on /dev/nvme0n1p1)' && reboot";
     };
   };
+  # Try app/package temporary
   programs.fish.functions = {
     try = {
       body = ''
@@ -71,13 +80,17 @@
       '';
     };
   };
-  # Git Identity
+  # Git Configurations
   programs.git = {
     enable = true;
-    userName = "Jhtdesu";
-    userEmail = "jhtdesu@gmail.com"; 
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Yukii";
+        email = "your-email@example.com";
+      };
+      # This replaces your old extraConfig
       init.defaultBranch = "master";
+      core.editor = "nvim";
     };
   };
   # SSH Configuration
@@ -90,10 +103,32 @@
       };
     };
   };
+  # Alacritty Configurations
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      window = {
+	opacity = 0.9;
+	padding = { x = 10; y = 10; };
+      };
+      font = {
+        normal = {
+          family = "JetBrainsMono Nerd Font";
+          style = "Regular";
+        };
+        bold = {
+          family = "JetBrainsMono Nerd Font";
+          style = "Bold";
+        };
+        size = 11; 
+      };
+    };
+  };
 
   # .NET Environment Variables
   home.sessionVariables = {
     DOTNET_ROOT = "${pkgs.dotnet-sdk_8}";
+    EDITOR = "nvim";
   };
   # Nix helper
   programs.nh = {
@@ -110,6 +145,5 @@
       center-new-windows = true;
     };
   };
-
-  programs.home-manager.enable = true;
+    programs.home-manager.enable = true;
 }

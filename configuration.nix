@@ -52,6 +52,8 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+  # Niri
+  programs.niri.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -111,14 +113,16 @@
 
   users.users.yukii.shell = pkgs.fish;
   # Docker
-  virtualisation.docker.enable = true;
-  
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = false;
+  };
   # enable flakes
   nix.settings = {
     #Experiental features
     experimental-features = [ "nix-command" "flakes" ];
     # This is the build speedup
-    max-jobs = 1;
+    max-jobs = 2;
     cores = 0; # Use all available logical cores for each build
     
     # Optional: keeps your system fast by cleaning up duplicates
@@ -133,12 +137,22 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # Grub
+    grub2
+    # Niri
+    niri
+    # others
     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     git
     brave
     wget
     curl
  ];
+  # Fonts
+  fonts.fontDir.enable = true;
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -153,6 +167,15 @@
   programs.fish.enable = true;
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+  # Optimize bootload
+  systemd.services.NetworkManager-wait-online.enable = false;
+  boot = {
+    initrd.systemd.enable = true;
+    loader.timeout = 1; # Reduce GRUB menu time
+    kernelParams = [
+	"8250.nr_uarts=0"
+    ];
+  };
 
   # Open ports in the firewall.
   networking.firewall = {
