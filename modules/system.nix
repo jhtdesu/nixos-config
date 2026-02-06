@@ -20,6 +20,12 @@
     auto-optimise-store = true;
   };
 
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 53317 ];
+    allowedUDPPorts = [ 53317 ];
+  };
+
   documentation.enable = false;
   documentation.nixos.enable = false;
   documentation.man.enable = false;

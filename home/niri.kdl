@@ -1,0 +1,49 @@
+// Input settings
+input {
+    keyboard {
+        xkb {
+            layout "us"
+        }
+    }
+    touchpad {
+        tap
+        natural-scroll
+    }
+}
+
+// Layout settings
+layout {
+    gaps 10
+    center-focused-column "never"
+    default-column-width { proportion 0.5; }
+}
+
+// Spawn Xwayland satellite automatically for X11 app support
+spawn-at-startup "xwayland-satellite"
+spawn-at-startup "waybar"
+spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/yukii/LocalSend/anime-eyes-illustration.jpg"
+
+// Keybinds (Mod is Super/Windows key)
+binds {
+    Mod+Return { spawn "alacritty"; }
+    Mod+D { spawn "fuzzel"; }
+    Mod+E { spawn "alacritty" "-e" "nvim"; }
+    Mod+Q { close-window; }
+    
+    // Window navigation
+    Mod+H { focus-column-left; }
+    Mod+L { focus-column-right; }
+    Mod+J { focus-window-down; }
+    Mod+K { focus-window-up; }
+
+    // Layout manipulation
+    Mod+R { switch-preset-column-width; }
+    Mod+F { maximize-column; }
+    Mod+Shift+E { quit; }
+}
+
+// Window rules
+window-rule {
+    match app-id="brave-browser"
+    open-maximized true
+}

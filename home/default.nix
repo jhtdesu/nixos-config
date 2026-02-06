@@ -1,13 +1,14 @@
 { config, pkgs, ... }: {
   home.username = "yukii";
   home.homeDirectory = "/home/yukii";
-  home.stateVersion = "24.11"; 
+  home.stateVersion = "25.11"; 
 
   imports = [
     ./apps.nix
     ./git.nix
     ./desktop.nix
-    ./shell.nix # Your previously created shell module
+    ./shell.nix 
+    ./waybar.nix
   ];
 
   programs.home-manager.enable = true;
