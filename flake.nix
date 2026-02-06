@@ -21,7 +21,7 @@
           home-manager.useUserPackages = true;
           # This is the magic line that moves conflicting files out of the way!
           home-manager.backupFileExtension = "backup";
-          home-manager.users.yukii = import ./home.nix;
+          home-manager.users.yukii = import ./home;
         }
       ];
     };
