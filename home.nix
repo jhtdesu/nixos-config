@@ -129,6 +129,7 @@
   home.sessionVariables = {
     DOTNET_ROOT = "${pkgs.dotnet-sdk_8}";
     EDITOR = "nvim";
+    TERMINAL = "alacritty";
   };
   # Nix helper
   programs.nh = {
