@@ -42,7 +42,7 @@
         
         focus-ring = {
           enable = true;
-          width = 2;
+          width = 2.0;
           active.color = "#7aa2f7"; # TokyoNight Blue (change to your taste)
           inactive.color = "#414868";
         };
@@ -89,6 +89,15 @@
 
       # 4. WINDOW RULES
       window-rules = [
+        {
+          geometry-corner-radius = {
+            bottom-left = 12.0;
+            bottom-right = 12.0;
+            top-left = 12.0;
+            top-right = 12.0;
+          };
+	  clip-to-geometry = true;
+	}
         {
           matches = [{ app-id = "brave"; }];
           open-on-workspace = "browser";
