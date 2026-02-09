@@ -9,6 +9,7 @@
     ./desktop.nix
     ./shell.nix 
     ./waybar.nix
+    ./niri
   ];
 
   programs.home-manager.enable = true;

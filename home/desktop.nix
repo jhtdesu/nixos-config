@@ -1,5 +1,4 @@
 { pkgs, ... }: {
-  xdg.configFile."niri/config.kdl".source = ./niri.kdl;
   home.packages = with pkgs; [
     xwayland-satellite # For X11 apps like Discord/Steam
     fuzzel             # Your chosen launcher

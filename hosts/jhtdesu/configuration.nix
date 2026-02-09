@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, inputs, ... }: {
   imports = [
     ./hardware-configuration.nix
     ./boot.nix
@@ -10,6 +10,7 @@
   networking.hostName = "jhtdesu";
   networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
+  services.displayManager.sessionPackages = [ inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-unstable ];
 
   users.users.yukii = {
     isNormalUser = true;
@@ -18,10 +19,16 @@
     shell = pkgs.fish;
   };
 
+  environment.pathsToLink = [ 
+    "/share/applications" 
+    "/share/xdg-desktop-portal" 
+    "/share/niri"
+  ];
+
   programs.fish.enable = true;
 
   environment.systemPackages = with pkgs; [
-    neovim git brave wget curl niri
+    neovim git brave wget curl 
   ];
 
   system.stateVersion = "25.11"; 

@@ -9,7 +9,7 @@
     fishPlugins.fzf-fish
     
     # GUI/Desktop
-    niri fuzzel swaybg alacritty
+    fuzzel swaybg alacritty
     nerd-fonts.jetbrains-mono
   ];
 }
