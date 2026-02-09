@@ -4,6 +4,7 @@
   ];
   fonts.fontconfig.enable = true;
   home.packages = [
+    pkgs.swaylock
     pkgs.swaybg
     pkgs.nerd-fonts.jetbrains-mono # Use the new specific syntax
   ];
@@ -85,6 +86,7 @@
         # Screenshots (requires grim/slurp)
         "Print".action.screenshot = { };
         "Mod+Print".action.screenshot-screen = { };
+	"Mod+L".action.spawn = [ "swaylock" "-c" "000000" ];
       };
 
       # 4. WINDOW RULES
