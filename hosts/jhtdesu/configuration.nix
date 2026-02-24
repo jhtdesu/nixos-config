@@ -27,6 +27,7 @@
 
   programs.fish.enable = true;
   security.pam.services.swaylock = {};
+  programs.ssh.startAgent = true;
 
   environment.systemPackages = with pkgs; [
     neovim git brave wget curl 

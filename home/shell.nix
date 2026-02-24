@@ -3,20 +3,20 @@
     enable = true;
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
+      if not set -q SSH_AUTH_SOCK
+        set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
+      end
     '';
     shellAliases = {
       update = "nh os switch ~/nixos-config";
       clean = "nh clean all --keep 2 2>/dev/null";
       nconf = "sudo nvim ~/nixos-config/configuration.nix";
       hconf = "sudo nvim ~/nixos-config/home.nix";
-      cursor = "cursor --ozone-platform=wayland";
       code = "code --ozone-platform-hint=auto";
       bios = "sudo systemctl reboot --firmware-setup";
       windows = "sudo grub-reboot 'Windows Boot Manager (on /dev/nvme0n1p1)' && reboot"; 
-      optimies = "nix-store --optimise";
+      optimise = "nix-store --optimise";
     };
-    
-    # Corrected: removed 'programs.fish.' prefix because we are already in the block
     functions = {
       try = {
         body = ''
@@ -37,7 +37,6 @@
       };
     };
   };
-
   home.sessionVariables = {
     DOTNET_ROOT = "${pkgs.dotnet-sdk_8}";
     EDITOR = "nvim";

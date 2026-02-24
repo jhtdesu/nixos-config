@@ -6,9 +6,22 @@
   home.packages = [
     pkgs.swaylock
     pkgs.swaybg
-    pkgs.nerd-fonts.jetbrains-mono # Use the new specific syntax
+    pkgs.nerd-fonts.jetbrains-mono 
   ];
   
+  programs.ssh = {
+    enable = true;
+    enableDefaultConfig = false;
+
+    matchBlocks = {
+      "*" = {
+        # The Nix-native way to set AddKeysToAgent
+        extraOptions = {
+          "AddKeysToAgent" = "yes";
+        };
+      };
+    };
+  };
   programs.waybar = {
     enable = true;
   };
@@ -25,7 +38,7 @@
         keyboard.xkb.layout = "us";
         touchpad = {
           tap = true;
-          dwt = true; # disable-while-typing
+          dwt = true;  
           natural-scroll = true;
         };
         mouse.accel-speed = 0.2;
@@ -44,13 +57,12 @@
         focus-ring = {
           enable = true;
           width = 2.0;
-          active.color = "#7aa2f7"; # TokyoNight Blue (change to your taste)
+          active.color = "#7aa2f7";  
           inactive.color = "#414868";
         };
       };
 
       # 3. KEYBINDINGS
-      # Format: "Modifiers+Key".action.name = [ "args" ] or { };
       binds = {
         # Basics
         "Mod+Return".action.spawn = [ "alacritty" ];

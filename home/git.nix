@@ -4,7 +4,7 @@
     settings = {
       user = {
         name = "Yukii";
-        email = "your-email@example.com";
+        email = "jhtdesu@gmail.com";
       };
       init.defaultBranch = "master";
       core.editor = "nvim";
