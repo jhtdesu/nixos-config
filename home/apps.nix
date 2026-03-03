@@ -11,5 +11,8 @@
     # GUI/Desktop
     fuzzel swaybg alacritty
     nerd-fonts.jetbrains-mono
+
+    # Office 
+    libreoffice
   ];
 }
