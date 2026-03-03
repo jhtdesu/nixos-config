@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, inputs, ... }: {
   imports = [
     ./extra.nix
   ];
@@ -7,6 +7,7 @@
     pkgs.swaylock
     pkgs.swaybg
     pkgs.nerd-fonts.jetbrains-mono 
+    inputs.niri.packages.x86_64-linux.niri-unstable
   ];
   
   programs.ssh = {
@@ -25,8 +26,5 @@
     enable = true;
   };
 
-  programs.niri = {
-    enable = true;
-    config = builtins.readFile ./config.kdl;
-  };
-}
+  xdg.configFile."niri/config.kdl".source = ./config.kdl;
+ }
