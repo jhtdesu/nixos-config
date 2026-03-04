@@ -2,7 +2,7 @@
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
-      set fish_greeting # Disable greeting
+      set fish_greeting
       if not set -q SSH_AUTH_SOCK
         set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
       end
@@ -14,7 +14,7 @@
       hconf = "sudo nvim ~/nixos-config/home.nix";
       code = "code --ozone-platform-hint=auto";
       bios = "sudo systemctl reboot --firmware-setup";
-      windows = "sudo grub-reboot 'Windows Boot Manager (on /dev/nvme0n1p1)' && reboot"; 
+      windows = "sudo grub-reboot 'Windows Boot Manager (on /dev/nvme0n1p1)' && reboot";
       optimise = "nix-store --optimise";
     };
     functions = {
@@ -25,21 +25,13 @@
           if test (count $argv) -ge 2
             set cmd $argv[2]
           end
-
           set -l my_temp_dir (mktemp -d)
           echo "📦 Sandbox Created: $my_temp_dir"
-
           nix-shell -p $pkg --run "HOME=$my_temp_dir $cmd"
-
           rm -rf $my_temp_dir
           echo "🗑️ Sandbox Deleted: $my_temp_dir"
         '';
       };
     };
-  };
-  home.sessionVariables = {
-    DOTNET_ROOT = "${pkgs.dotnet-sdk_8}";
-    EDITOR = "nvim";
-    TERMINAL = "alacritty";
   };
 }
