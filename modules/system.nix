@@ -15,10 +15,25 @@
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
-    max-jobs = 2;
+    max-jobs = "auto";
     cores = 0;
     auto-optimise-store = true;
   };
+
+  boot.consoleLogLevel = 0;
+  boot.kernelParams = [ "quiet" "udev.log_level=0" ];
+
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+      intel-vaapi-driver
+    ];
+  };
+
+  services.auto-cpufreq.enable = true;
+  services.thermald.enable = true;
+  hardware.bluetooth.enable = false;
 
   networking.firewall = {
     enable = true;
