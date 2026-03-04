@@ -33,5 +33,10 @@
     neovim git brave wget curl 
   ];
 
+  environment.variables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+  };
+
   system.stateVersion = "25.11"; 
 }

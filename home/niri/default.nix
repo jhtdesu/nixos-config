@@ -27,4 +27,5 @@
   };
 
   xdg.configFile."niri/config.kdl".source = ./config.kdl;
+  xdg.configFile."fuzzel/fuzzel.ini".source = ./fuzzel.ini;
  }

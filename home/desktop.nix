@@ -5,6 +5,7 @@
     swaybg             # For wallpapers
     waybar             # Status bar
   ];
+
   programs.alacritty = {
     enable = true;
     settings = {

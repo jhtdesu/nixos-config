@@ -1,7 +1,14 @@
-{ pkgs, ... }: {
-  services.xserver.enable = true;
-  services.displayManager.gdm.enable = true;
-
+{ pkgs, lib, ... }: {
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+	command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --remember-username --cmd niri-session";
+        user = "greeter";
+      };
+    };
+  };
+  programs.dconf.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -9,9 +16,4 @@
     pulse.enable = true;
   };
   security.rtkit.enable = true;
-
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
 }
