@@ -10,8 +10,6 @@
     shellAliases = {
       update = "nh os switch ~/nixos-config";
       clean = "nh clean all --keep 2 2>/dev/null";
-      nconf = "sudo nvim ~/nixos-config/configuration.nix";
-      hconf = "sudo nvim ~/nixos-config/home.nix";
       code = "code --ozone-platform-hint=auto";
       bios = "sudo systemctl reboot --firmware-setup";
       windows = "sudo grub-reboot 'Windows Boot Manager (on /dev/nvme0n1p1)' && reboot";

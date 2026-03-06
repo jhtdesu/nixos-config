@@ -1,5 +1,8 @@
 spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/yukii/nixos-config/wallpapers/anime-eyes-illustration.jpg"
-spawn-at-startup "waybar"
+
+hotkey-overlay {
+    skip-at-startup
+}
 
 input {
   keyboard {
