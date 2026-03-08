@@ -1,4 +1,4 @@
-spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/yukii/nixos-config/wallpapers/wallpaper.jpg"
+spawn-at-startup "waypaper" "--restore"
 
 hotkey-overlay {
     skip-at-startup
@@ -52,7 +52,7 @@ layout {
 }
 
 binds {
-  Mod+Return { spawn "alacritty"; }
+  Mod+Return { spawn "ghostty"; }
   Mod+D { spawn "fuzzel"; }
   Mod+Q { close-window; }
   Mod+Shift+E { quit; }

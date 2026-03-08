@@ -43,6 +43,6 @@
     GTK_THEME = "Adwaita:dark";
     DOTNET_ROOT = "${pkgs.dotnet-sdk_8}";
     EDITOR = "nvim";
-    TERMINAL = "alacritty";
+    TERMINAL = "ghostty";
   };
 }

@@ -9,7 +9,7 @@
     fishPlugins.fzf-fish
 
     # GUI/Desktop
-    fuzzel swaybg alacritty
+    fuzzel swaybg waypaper ghostty starship
     nerd-fonts.jetbrains-mono
     xwayland-satellite
 
