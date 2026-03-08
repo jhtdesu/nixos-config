@@ -1,4 +1,4 @@
-spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/yukii/nixos-config/wallpapers/anime-eyes-illustration.jpg"
+spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/yukii/nixos-config/wallpapers/wallpaper.jpg"
 
 hotkey-overlay {
     skip-at-startup
@@ -65,7 +65,7 @@ binds {
   Mod+Shift+Left { move-column-left; }
   Mod+Shift+Right { move-column-right; }
 
-  Mod+B { spawn "pkill" "-USR1" "waybar"; }
+  Mod+B { spawn "bash" "-c" "pgrep waybar && pkill waybar || waybar &"; }
 
   Mod+Comma { consume-window-into-column; }
   Mod+Period { expel-window-from-column; }
