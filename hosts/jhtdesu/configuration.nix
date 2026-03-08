@@ -28,6 +28,13 @@
   programs.fish.enable = true;
   security.pam.services.swaylock = {};
   programs.ssh.startAgent = true;
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [
+      fcitx5-bamboo
+      fcitx5-gtk
+    ];
+  };
 
   environment.systemPackages = with pkgs; [
     neovim git brave wget curl 
