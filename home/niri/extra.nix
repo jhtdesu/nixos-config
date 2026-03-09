@@ -14,6 +14,9 @@
       height = 100;
       padding = "12";
       font = "JetBrainsMono Nerd Font 11";
+      "[app-name='Wayland Diagnose']" = {
+        invisible = 1;
+      };
     };
   };
 
