@@ -14,6 +14,6 @@
     xwayland-satellite
 
     # Office
-    libreoffice obsidian
+    libreoffice
   ];
 }
