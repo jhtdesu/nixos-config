@@ -3,6 +3,7 @@
     # Dev Tools
     vscode dbeaver-bin dotnet-sdk_8 bun
     localsend lazydocker lazygit lazysql docker-compose
+    unzip
 
     # CLI Utilities
     btop fastfetch tldr wget jq yazi bat eza zoxide ripgrep fzf fd xclip

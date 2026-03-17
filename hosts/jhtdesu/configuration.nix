@@ -10,7 +10,7 @@
   networking.hostName = "jhtdesu";
   networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
-  services.displayManager.sessionPackages = [ inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-unstable ];
+  services.displayManager.sessionPackages = [ pkgs.niri ];
 
   users.users.yukii = {
     isNormalUser = true;

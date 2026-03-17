@@ -7,7 +7,7 @@
 
   home.packages = [
     pkgs.swaylock
-    inputs.niri.packages.x86_64-linux.niri-unstable
+    pkgs.niri
   ];
 
   xdg.configFile."niri/config.kdl".source = ./config.kdl;
