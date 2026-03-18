@@ -28,6 +28,9 @@
   programs.fish.enable = true;
   security.pam.services.swaylock = {};
   programs.ssh.startAgent = true;
+  programs.ssh.extraConfig = ''
+    AddKeysToAgent yes
+  '';
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
