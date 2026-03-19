@@ -3,8 +3,6 @@
     ./extra.nix
   ];
 
-  fonts.fontconfig.enable = true;
-
   home.packages = [
     pkgs.swaylock
     pkgs.niri

@@ -11,7 +11,6 @@
 
     # GUI/Desktop
     fuzzel swaybg waypaper ghostty starship
-    nerd-fonts.jetbrains-mono
     xwayland-satellite
 
     # Office

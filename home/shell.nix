@@ -14,6 +14,7 @@
       bios = "sudo systemctl reboot --firmware-setup";
       windows = "sudo grub-reboot 'Windows Boot Manager (on /dev/nvme0n1p1)' && reboot";
       optimise = "nix-store --optimise";
+      clean-dotnet = "rm -rf ~/.nuget/packages";
     };
     functions = {
       try = {
