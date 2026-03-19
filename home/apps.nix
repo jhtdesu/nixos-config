@@ -16,4 +16,30 @@
     # Office
     libreoffice
   ];
+
+  xdg.desktopEntries.brave-browser = {
+    name = "Brave Web Browser";
+    genericName = "Web Browser";
+    exec = "brave --enable-features=TouchpadOverscrollHistoryNavigation --ozone-platform=wayland %U";
+    icon = "brave-browser";
+    terminal = false;
+    categories = [ "Network" "WebBrowser" ];
+    mimeType = [
+      "application/pdf"
+      "text/html"
+      "text/xml"
+      "x-scheme-handler/http"
+      "x-scheme-handler/https"
+    ];
+    actions = {
+      "new-window" = {
+        name = "New Window";
+        exec = "brave --enable-features=TouchpadOverscrollHistoryNavigation --ozone-platform=wayland";
+      };
+      "new-private-window" = {
+        name = "New Incognito Window";
+        exec = "brave --enable-features=TouchpadOverscrollHistoryNavigation --ozone-platform=wayland --incognito";
+      };
+    };
+  };
 }
