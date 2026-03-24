@@ -14,7 +14,7 @@
     xwayland-satellite
 
     # Office
-    libreoffice
+    libreoffice onlyoffice-desktopeditors
   ];
 
   xdg.desktopEntries.brave-browser = {
