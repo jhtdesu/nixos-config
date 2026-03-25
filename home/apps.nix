@@ -6,7 +6,7 @@
     unzip
 
     # CLI Utilities
-    btop fastfetch tldr wget jq yazi bat eza zoxide ripgrep fzf fd xclip
+    btop fastfetch wget jq yazi bat fzf fd xclip
     fishPlugins.fzf-fish
 
     # GUI/Desktop
