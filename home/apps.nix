@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
     # Dev Tools
-    vscode dbeaver-bin dotnet-sdk_8 bun nodejs
+    antigravity vscode dbeaver-bin dotnet-sdk_8 bun nodejs
     localsend lazydocker lazygit lazysql docker-compose
     unzip wireguard-tools
 
