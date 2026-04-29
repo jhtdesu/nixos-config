@@ -22,6 +22,7 @@
 
   boot.consoleLogLevel = 0;
   boot.kernelParams = [ "quiet" "udev.log_level=0" ];
+  boot.kernelModules = [ "tun" ];
 
   hardware.graphics = {
     enable = true;

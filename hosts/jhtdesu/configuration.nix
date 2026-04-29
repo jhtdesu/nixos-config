@@ -40,6 +40,10 @@
     ];
   };
 
+  services.dbus.enable = true;
+  programs.openvpn3.enable = true;
+  services.resolved.enable = true;
+
   environment.systemPackages = with pkgs; [
     neovim git brave wget curl 
   ];

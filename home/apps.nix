@@ -1,12 +1,12 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
     # Dev Tools
-    antigravity vscode dbeaver-bin dotnet-sdk_8 bun nodejs
-    localsend lazydocker lazygit lazysql docker-compose
-    unzip wireguard-tools
+    antigravity dbeaver-bin dotnet-sdk_8 bun nodejs
+    localsend lazydocker lazygit docker-compose
+    unzip wireguard-tools openvpn3
 
     # CLI Utilities
-    btop fastfetch wget jq yazi bat fzf fd xclip
+    btop fastfetch wget jq yazi bat fd 
     fishPlugins.fzf-fish
 
     # GUI/Desktop
