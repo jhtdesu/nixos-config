@@ -13,6 +13,8 @@
     LC_TIME = "en_SG.UTF-8";
   };
 
+  nixpkgs.config.allowUnfree = true;
+
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
     max-jobs = "auto";
@@ -46,6 +48,5 @@
   documentation.nixos.enable = false;
   documentation.man.enable = false;
 
-  nixpkgs.config.allowUnfree = true;
-  fonts.packages = with pkgs; [ nerd-fonts.jetbrains-mono ];
+  fonts.packages = with pkgs; [ nerd-fonts.jetbrains-mono corefonts ];
 }
