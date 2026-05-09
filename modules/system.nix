@@ -49,4 +49,5 @@
   documentation.man.enable = false;
 
   fonts.packages = with pkgs; [ nerd-fonts.jetbrains-mono corefonts ];
+  fonts.fontconfig.enable = true;
 }
