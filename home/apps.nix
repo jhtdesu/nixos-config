@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
     # Dev Tools
-    antigravity dbeaver-bin dotnet-sdk_8 bun nodejs
+    antigravity gemini-cli dbeaver-bin dotnet-sdk_8 bun nodejs
     localsend lazydocker lazygit docker-compose
     unzip wireguard-tools openvpn3
 
